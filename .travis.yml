@@ -12,3 +12,22 @@ before_install:
 script:
 #tests run with coverage
 - docker run ballamouli91/docker-react-frontend npm run test -- --coverage
+
+#deploystage
+deploy:
+ provider: elasticbeanstalk
+ region: "us-west-2"
+ app: "docker"
+ env: "Docker-env"
+#s3 bucket name where travis will put code and image in AWS, Which automatically created when we create elasticbeanstalk
+ bucket_name: "elasticbeanstalk-us-west-2-306476627547"
+ #bucket path is app name
+ bucket_path: "docker"
+ on:
+  branch: master
+#update API keys for travis to communicate with AWS EBS, access it from travis secrets
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key:
+    secure: "$AWS_SECRET_KEY"
+
+ 
