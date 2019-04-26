@@ -10,6 +10,7 @@ RUN npm run build
 # as any single block have single from statement, second from statment will terminate from that block
 
 FROM nginx 
+#expose Port for us to access from beanstalk
 #specify the foolder we want to copy from previous phase and to location where ngnix use to server static contents
 #mentined at https://hub.docker.com/_/nginx "/usr/share/nginx/html"
 COPY --from=builder /app/build /usr/share/nginx/html
