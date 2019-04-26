@@ -10,5 +10,7 @@ before_install:
 # as we know that npm run tests just sites and hangs for waiting from us, so we need pass extra comand -- -- coverage to run tests and exits out of terminal
 
 script:
-#tests rerun
-- docker run ballamouli91/docker-react-frontend npm run test
+#tests run with coverage
+- docker run ballamouli91/docker-react-frontend npm run test -- --coverage
+- npm -v
+
