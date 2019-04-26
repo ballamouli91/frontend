@@ -11,5 +11,4 @@ before_install:
 
 script:
 #tests run with coverage
-- docker run ballamouli91/docker-react-frontend npm run test -- --coverage --exit
-
+- docker run ballamouli91/docker-react-frontend npm run test -- --coverage
