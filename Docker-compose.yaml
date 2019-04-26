@@ -1,0 +1,22 @@
+Version: 3
+Services:
+ web:
+  build: 
+    context: .
+    dockerfile: Dockerfile.dev
+  ports:
+   - "3000:3000"
+  volumes:
+    - app/node_modules
+    - .:/app
+ tests:
+  build: 
+    context: .
+    dockerfile: Dockerfile.dev
+  #No need of ports as out tests suite not require any ports
+  volumes:
+    - app/node_modules
+    - .:/app
+  # override the default command npm run start we use the argument command here in tests service
+  command: ["nom", "run", "test"]
+    
