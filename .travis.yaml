@@ -1,0 +1,15 @@
+#Permission level required
+sudo: required
+#services required
+services:
+  - docker
+#commands/steps to be executed before to run our tests which are build image with tag (for convinience)
+before_install:
+ - docker build -t ballamouli91/docker-react-frontend:latest -f Dockerfile.dev .
+#script section suppose to conatain all commands to run our test suite, if test suite exit code is zero then travis feel tests are passed
+# as we know that npm run tests just sites and hangs for waiting from us, so we need pass extra comand -- -- coverage to run tests and exits out of terminal
+
+script:
+ - docker run ballamouli91/docker-react-frontend npm run test -- -- coverage
+
+ 
